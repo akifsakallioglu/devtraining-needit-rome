@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element audit="true" extends="task" label="NeedIt" max_length="40" name="x_58872_needit_needit" type="collection">
+    <element audit="true" extends="task" label="NeedIt" max_length="40" name="x_58872_needit_needit" sizeclass="14" type="collection">
+        <element attributes="encode_utf8=false" label="Assigned Group" max_length="32" name="assigned_group" read_only="true" reference="sys_user_group" type="reference"/>
         <element attributes="edge_encryption_enabled=true" choice="3" default="legal" label="Request type" mandatory="true" max_length="40" name="u_choice_3" type="string">
             <choice>
                 <element inactive_on_update="false" label="Human Resources" sequence="0" value="hr"/>
@@ -8,16 +9,16 @@
                 <element inactive_on_update="false" label="Information Technology" sequence="3" value="it"/>
             </choice>
         </element>
-        <element attributes="edge_encryption_enabled=true" choice="3" default="legal1" label="What needed" mandatory="true" max_length="40" name="u_choice_4" type="string">
+        <element attributes="edge_encryption_enabled=true" choice="3" choice_field="u_choice_3" default="legal1" dependent="u_choice_3" dependent_on_field="u_choice_3" label="What needed" mandatory="true" max_length="40" name="u_choice_4" type="string" use_dependent_field="true">
             <choice>
-                <element inactive_on_update="false" label="Human Resources 1" sequence="0" value="hr1"/>
-                <element inactive_on_update="false" label="Human Resources 1" sequence="1" value="hr2"/>
-                <element inactive_on_update="false" label="Facilities 1" sequence="2" value="facilities1"/>
-                <element inactive_on_update="false" label="Facilities 2" sequence="3" value="facilities2"/>
-                <element inactive_on_update="false" label="Legal 1" sequence="4" value="legal1"/>
-                <element inactive_on_update="false" label="Legal 2" sequence="5" value="legal2"/>
-                <element inactive_on_update="false" label="Information Technology 1" sequence="6" value="it1"/>
-                <element inactive_on_update="false" label="Information Technology 2" sequence="7" value="it2"/>
+                <element dependent_value="hr" inactive_on_update="false" label="Human Resources 1" sequence="0" value="hr1"/>
+                <element dependent_value="hr" inactive_on_update="false" label="Human Resources 1" sequence="1" value="hr2"/>
+                <element dependent_value="facilities" inactive_on_update="false" label="Facilities 1" sequence="2" value="facilities1"/>
+                <element dependent_value="facilities" inactive_on_update="false" label="Facilities 2" sequence="3" value="facilities2"/>
+                <element dependent_value="legal" inactive_on_update="false" label="Legal 1" sequence="4" value="legal1"/>
+                <element dependent_value="legal" inactive_on_update="false" label="Legal 2" sequence="5" value="legal2"/>
+                <element dependent_value="it" inactive_on_update="false" label="Information Technology 1" sequence="6" value="it1"/>
+                <element dependent_value="it" inactive_on_update="false" label="Information Technology 2" sequence="7" value="it2"/>
             </choice>
         </element>
         <element attributes="edge_encryption_enabled=true" label="When needed" mandatory="true" max_length="40" name="u_glide_date_time_1" type="glide_date_time"/>
